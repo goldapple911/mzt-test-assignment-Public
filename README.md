@@ -29,7 +29,7 @@ While doing this test assignment, please pay attention to these aspects:
 - Always consider that the only existing company in the database is the one that contacts the job seekers (candidates)
 
 
-_****This app was created only for the purpose of the test assignment and code quality in this repository DOES NOT represent code quality in MyZenTeam.**_
+_**This app was created only for the purpose of the test assignment and code quality in this repository DOES NOT represent code quality in MyZenTeam.**_
 
 ## Get started
 
