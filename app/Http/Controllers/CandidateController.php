@@ -17,4 +17,9 @@ class CandidateController extends Controller
         // @todo
         // Your code goes here...
     }
+
+    public function hire(){
+        // @todo
+        // Your code goes here...
+    }
 }
