@@ -32,7 +32,6 @@ While doing this test assignment, please pay attention to these aspects:
 ## Notes
 - Authentication **IS NOT** in the scope of this assignment.
 - The list of candidates, the company and the wallet are predefined and there is no need to create new ones.
-- Always consider that the only existing company in the database is the one that contacts the job seekers (candidates).
 - The emails that should be sent to the candidates can consist of only text, no design is needed.
 
 
