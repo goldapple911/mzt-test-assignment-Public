@@ -40,4 +40,4 @@ _**This app was created only for the purpose of the test assignment and code qua
 
 ## Get started
 
-Use this repository as your starting point, but **DO NOT** fork it. Create a public repository on GitHub for your application source code, push it and send a link to jobs@myzenteam.com.
+Use this repository as your starting point, but **DO NOT** fork it. Create a public repository on GitHub for your application source code, push it and send the link to us.
