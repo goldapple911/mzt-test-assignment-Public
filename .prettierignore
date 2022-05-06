@@ -5,6 +5,7 @@ vendor
 node_modules
 public
 storage
+bootstrap/cache
 
 artisan
 .env

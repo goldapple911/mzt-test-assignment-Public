@@ -10,7 +10,7 @@ class CandidateController extends Controller
     public function index()
     {
         $candidates = Candidate::all();
-        $coins = Company::find(1)->coins;
+        $coins = Company::find(1)->wallet->coins;
         return view('candidates.index', compact('candidates', 'coins'));
     }
 
