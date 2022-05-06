@@ -5,6 +5,7 @@
   "arrowParens": "always",
   "endOfLine": "auto",
   "singleAttributePerLine": true,
+  "plugins": ["prettier-plugin-blade"],
   "overrides": [
     {
       "files": "*.php",

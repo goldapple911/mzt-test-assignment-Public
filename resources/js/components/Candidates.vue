@@ -7,6 +7,7 @@
       <div
         v-for="candidate in candidates"
         class="rounded overflow-hidden shadow-lg"
+        :key="candidate.id"
       >
         <img
           class="w-full"
@@ -25,6 +26,7 @@
           <span
             v-for="strength in JSON.parse(candidate.strengths)"
             class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+            :key="strength.id"
           >
             {{ strength }}
           </span>
