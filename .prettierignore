@@ -1,0 +1,11 @@
+# Ignore artifacts:
+build
+coverage
+vendor
+node_modules
+public
+storage
+
+artisan
+.env
+.env.example
