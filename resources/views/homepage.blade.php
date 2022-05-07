@@ -23,7 +23,7 @@
     </head>
     <body>
         <div id="app">
-            <div class="container">
+            <div class="container-fluid">
                 <h1 class="p-40 text-4xl font-bold text-center">Welcome to the hiring platform</h1>
                 <div class="flex items-center justify-center">
                     <a
