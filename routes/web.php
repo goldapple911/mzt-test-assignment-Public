@@ -21,4 +21,5 @@ Route::get('/', function () {
 Route::prefix('candidates')->group(function () {
     Route::get('/', [CandidateController::class, 'index'])->name('candidates.index');
     Route::post('/{candidate}/contact', [CandidateController::class, 'contact'])->name('candidates.contact');
+    Route::patch('/{candidate}/hire', [CandidateController::class, 'hire'])->name('candidates.hire');
 });

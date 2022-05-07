@@ -24,4 +24,10 @@ class Wallet extends Model
             throw new Exception('Not enough coins!');
         }
     }
+
+    public function putBackCoins($count)
+    {
+        $this->coins = $this->coins + $count;
+        $this->save();
+    }
 }

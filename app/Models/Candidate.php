@@ -27,6 +27,12 @@ class Candidate extends Model
         return !$companyOnNegotiation || $companyOnNegotiation->pivot->status === 'onlist';
     }
 
+    public function isAbleToHire($companyId)
+    {
+        $companyOnNegotiation = $this->getCompanyOnNegotiation($companyId);
+        return $companyOnNegotiation && $companyOnNegotiation->pivot->status === 'contacted';
+    }
+
     public function contact()
     {
         // Update or create status
@@ -36,11 +42,22 @@ class Candidate extends Model
         );
     }
 
+    public function hire()
+    {
+        // Update status
+        $negotiation = Negotiation::where(['company_id' => 1, 'candidate_id' => $this->id])->update([
+            'status' => 'hired',
+        ]);
+    }
+
     public static function getAllWithAvailabilities()
     {
+        $companyId = 1;
+
         $candidates = Candidate::all();
         foreach ($candidates as $candidate) {
-            $candidate->ableToContact = $candidate->isAbleToContact(1);
+            $candidate->ableToContact = $candidate->isAbleToContact($companyId);
+            $candidate->ableToHire = $candidate->isAbleToHire($companyId);
         }
         return $candidates;
     }

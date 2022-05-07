@@ -41,9 +41,12 @@
             {{ candidate.ableToContact ? 'Contact' : 'Contacted' }}
           </button>
           <button
-            class="bg-white hover:bg-teal-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow disabled:opacity-50"
+            class="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow disabled:opacity-50"
+            :class="{ 'hover:bg-teal-100': candidate.ableToHire }"
+            v-on:click.stop.prevent="hire(candidate.id)"
+            :disabled="candidate.ableToContact || !candidate.ableToHire"
           >
-            Hire
+            {{ candidate.ableToContact || candidate.ableToHire ? 'Hire' : 'Hired' }}
           </button>
         </div>
       </div>
@@ -59,6 +62,18 @@
         window.axios
           .post(`/candidates/${id}/contact`)
           .then((res) => {
+            console.log(res);
+            location.reload();
+          })
+          .catch((err) => {
+            alert(err.response.data?.message ?? err.message);
+          });
+      },
+      hire(id) {
+        window.axios
+          .patch(`/candidates/${id}/hire`)
+          .then((res) => {
+            console.log(res);
             location.reload();
           })
           .catch((err) => {

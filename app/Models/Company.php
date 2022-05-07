@@ -24,4 +24,9 @@ class Company extends Model
     {
         return $this->wallet->chargeCoins(config('constants.VALUES.COMPANY.COINS_PER_CONTACT'));
     }
+
+    public function putBackCoins()
+    {
+        return $this->wallet->putBackCoins(config('constants.VALUES.COMPANY.COINS_PER_CONTACT'));
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Candidate;
 use App\Models\Company;
 use App\Mail\ContactCandidate;
+use App\Mail\HireCandidate;
 use Illuminate\Support\Facades\Mail;
 
 class CandidateController extends Controller
@@ -32,11 +33,24 @@ class CandidateController extends Controller
         $company->chargeCoins();
         // --> Create a negotiation
         $candidate->contact();
+
+        return true;
     }
 
-    public function hire()
+    public function hire(Candidate $candidate)
     {
-        // @todo
-        // Your code goes here...
+        // Check policy
+        $this->authorize('hire', $candidate);
+
+        // Finally contact!
+        $company = Company::find(1);
+        // --> Send an email
+        Mail::to($candidate->email)->send(new HireCandidate($company, $candidate));
+        // --> Charge 5 coins
+        $company->putBackCoins();
+        // --> Create a negotiation
+        $candidate->hire();
+
+        return true;
     }
 }

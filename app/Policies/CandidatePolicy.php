@@ -33,6 +33,25 @@ class CandidatePolicy
     }
 
     /**
+     * Determine whether the user can contact with the candidate
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Candidate  $candidate
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function hire(?User $user, Candidate $candidate)
+    {
+        $companyId = 1;
+
+        // Check if be able to contact
+        // --> Check if you have enough coins to contact a new candidate.
+        // --> And the candidate had already been contacted by you.
+        return $candidate->isAbleToHire($companyId)
+            ? Response::allow()
+            : Response::deny(config('constants.ERROR_MSGS.CANDIDATES.NOT_ABLE_TO_HIRE'));
+    }
+
+    /**
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
