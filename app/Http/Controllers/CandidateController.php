@@ -34,7 +34,7 @@ class CandidateController extends Controller
         // --> Create a negotiation
         $candidate->contact();
 
-        return true;
+        return response('Success', 200);
     }
 
     public function hire(Candidate $candidate)
@@ -51,6 +51,6 @@ class CandidateController extends Controller
         // --> Create a negotiation
         $candidate->hire();
 
-        return true;
+        return response('Success', 200);
     }
 }
