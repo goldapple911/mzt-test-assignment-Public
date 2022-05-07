@@ -33,12 +33,15 @@
         </div>
         <div class="p-6 float-right">
           <button
-            class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            class="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow disabled:opacity-50"
+            :class="{ 'hover:bg-gray-100': candidate.ableToContact }"
+            v-on:click.stop.prevent="contact(candidate.id)"
+            :disabled="!candidate.ableToContact"
           >
-            Contact
+            {{ candidate.ableToContact ? 'Contact' : 'Contacted' }}
           </button>
           <button
-            class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 hover:bg-teal-100 rounded shadow"
+            class="bg-white hover:bg-teal-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow disabled:opacity-50"
           >
             Hire
           </button>
@@ -51,5 +54,17 @@
 <script>
   export default {
     props: ['candidates'],
+    methods: {
+      contact(id) {
+        window.axios
+          .post(`/candidates/${id}/contact`)
+          .then((res) => {
+            location.reload();
+          })
+          .catch((err) => {
+            alert(err.response.data?.message ?? err.message);
+          });
+      },
+    },
   };
 </script>

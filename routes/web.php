@@ -18,5 +18,7 @@ Route::get('/', function () {
     return view('homepage');
 });
 
-Route::get('candidates-list', [CandidateController::class, 'index']);
-Route::post('candidates-contact', [CandidateController::class, 'contact']);
+Route::prefix('candidates')->group(function () {
+    Route::get('/', [CandidateController::class, 'index'])->name('candidates.index');
+    Route::post('/{candidate}/contact', [CandidateController::class, 'contact'])->name('candidates.contact');
+});

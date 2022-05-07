@@ -14,4 +14,14 @@ class Wallet extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function chargeCoins($count)
+    {
+        if ($this->coins >= $count) {
+            $this->coins = $this->coins - $count;
+            $this->save();
+        } else {
+            throw new Exception('Not enough coins!');
+        }
+    }
 }

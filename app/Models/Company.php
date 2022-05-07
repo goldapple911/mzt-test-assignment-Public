@@ -14,4 +14,14 @@ class Company extends Model
     {
         return $this->hasOne(Wallet::class);
     }
+
+    public function hasEnoughCoins()
+    {
+        return $this->wallet->coins >= config('constants.VALUES.COMPANY.COINS_PER_CONTACT');
+    }
+
+    public function chargeCoins()
+    {
+        return $this->wallet->chargeCoins(config('constants.VALUES.COMPANY.COINS_PER_CONTACT'));
+    }
 }
