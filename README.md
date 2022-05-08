@@ -60,7 +60,7 @@
 - Run Apache
 - Navigate app.domain.com on your browser
 
-## How to Test
+## How to Test (Just checked if prevented security holes)
 
 - Create a database for testing.
 - Set environment
